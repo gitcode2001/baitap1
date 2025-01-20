@@ -38,4 +38,11 @@ function StudentList() {
 
 export default StudentList;
 
-//key
+// Key là một thuộc tính duy nhất được gán cho mỗi phần tử trong một danh sách khi React render một danh sách các phần tử.
+// Nó được sử dụng để xác định các phần tử một cách duy nhất.
+//Tại sao phải có key trong vòng lặp ?
+// React sử dụng key để tối ưu hóa quá trình render danh sách. Khi danh sách được cập nhật (thêm, sửa, xóa),
+// React dựa vào key để: Xác định phần tử nào cần thay đổi.
+// Tránh render lại toàn bộ danh sách từ đầu.
+// Nếu không có key, React sẽ không biết cách xử lý các phần tử nào thay đổi,
+// dẫn đến hiệu suất kém và có thể gây ra lỗi logic.
