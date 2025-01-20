@@ -5,7 +5,7 @@
       "title": "Top 10 Cryptocurrencies for 2022",
       "slug": "top-10-cryptocurrencies-for-2022",
       "category": "Cryptocurrency Analysis",
-      "updatedAt": "2025-01-19T06:39:39.393Z",
+      "updatedAt": "2025-01-19T08:27:41.484Z",
       "content": "1",
       "author": "John Doe",
       "author_email": "john.doe@example.com"
@@ -29,36 +29,6 @@
       "content": "1",
       "author": "Alice Johnson",
       "author_email": "alice.johnson@example.com"
-    },
-    {
-      "id": "5",
-      "title": "12",
-      "category": "123",
-      "content": "123",
-      "author": "123123",
-      "author_email": "1231@gmailc.com1",
-      "slug": "12",
-      "updatedAt": "2025-01-19T06:13:47.587Z"
-    },
-    {
-      "id": "6",
-      "title": "13",
-      "category": "123",
-      "content": "123",
-      "author": "132",
-      "author_email": "1231@gmailc.com1",
-      "slug": "13",
-      "updatedAt": "2025-01-19T06:15:26.736Z"
-    },
-    {
-      "id": "7",
-      "title": "123",
-      "category": "123",
-      "content": "123",
-      "author": "123",
-      "author_email": "1231@gmailc.com",
-      "slug": "123",
-      "updatedAt": "2025-01-19T07:04:13.918Z"
     }
   ]
 }
