@@ -16,6 +16,7 @@ function StudentList() {
                         <th>STT</th>
                         <th>Họ và tên</th>
                         <th>Điểm</th>
+                        <th>Học Lực</th>
                         <th>Địa chỉ</th>
                     </tr>
                 </thead>
@@ -25,6 +26,7 @@ function StudentList() {
                             <td>{index + 1}</td>
                             <td>{student.name}</td>
                             <td>{student.point}</td>
+                            <td>{student.point >= 9? "giỏi" : student.point >= 5? "khá" : "trung bình"}</td>
                             <td>{student.address}</td>
                         </tr>
                     ))}
