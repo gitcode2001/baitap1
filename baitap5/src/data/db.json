@@ -1,0 +1,99 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "name": "Lê Minh thi",
+      "age": 25,
+      "classes": {
+        "classId": "1",
+        "nameClass": "Lớp c07"
+      },
+      "grade": "nam",
+      "address": "Quảng Trị"
+    },
+    {
+      "id": "2",
+      "name": "Hoàng Ngọc Hiếu",
+      "age": 23,
+      "classes": {
+        "classId": "1",
+        "nameClass": "Lớp c07"
+      },
+      "grade": "nam",
+      "address": "Quảng Trị"
+    },
+    {
+      "id": "3",
+      "name": "Hoàng Thị Ánh Tuyết",
+      "age": 19,
+      "classes": {
+        "classId": "1",
+        "nameClass": "Lớp c07"
+      },
+      "grade": "nữ",
+      "address": "Quảng Nam"
+    },
+    {
+      "id": "4",
+      "name": "Nguyễn Văn Trông",
+      "age": 25,
+      "classes": {
+        "classId": "4",
+        "nameClass": "Lớp c10"
+      },
+      "grade": "nam",
+      "address": "Hà Nội"
+    },
+    {
+      "id": "ea0b",
+      "name": "1",
+      "age": 19,
+      "grade": "1",
+      "classes": {
+        "classId": "1",
+        "nameClass": "Lớp c07"
+      },
+      "address": "12"
+    },
+    {
+      "id": "b39c",
+      "name": "1",
+      "age": 19,
+      "grade": "1",
+      "classes": {
+        "classId": "1",
+        "nameClass": "Lớp c07"
+      },
+      "address": "12"
+    },
+    {
+      "id": "e8e8",
+      "name": "123",
+      "age": 123,
+      "grade": "21",
+      "address": "12",
+      "classes": {
+        "classId": "1",
+        "nameClass": "21"
+      }
+    }
+  ],
+  "classes": [
+    {
+      "classId": "1",
+      "className": "Lớp c07"
+    },
+    {
+      "classId": "2",
+      "className": "Lớp c08"
+    },
+    {
+      "classId": "3",
+      "className": "lớp c09"
+    },
+    {
+      "classId": "4",
+      "className": "Lớp c10"
+    }
+  ]
+}
