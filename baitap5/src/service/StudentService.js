@@ -1,17 +1,17 @@
 import axios from 'axios';
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 const BASE_URL = 'http://localhost:3000/students';
-const BASE_CLASS_URL = 'http://localhost:3000/classes';
+
 export const getAllStudents = async () => {
-  try {
-      const response = await axios.get(BASE_URL);
-      toast.success("lấy danh sách học sinh thành công");
-      return response.data;
-  }catch (error) {
-      console.error('Lỗi khi lấy danh sách học sinh:', error);
-      throw error;
-  }
+    try {
+        const response = await axios.get(BASE_URL);
+        toast.success("Lấy danh sách học sinh thành công");
+        return response.data;
+    } catch (error) {
+        console.error('Lỗi khi lấy danh sách học sinh:', error);
+        throw error;
+    }
 }
 
 export const addStudent = async (student) => {
@@ -24,3 +24,51 @@ export const addStudent = async (student) => {
         throw error;
     }
 }
+
+export const updateStudent = async (student) => {
+    try {
+        const response = await axios.put(`${BASE_URL}/${student.id}`, student);
+        toast.success("Cập nhật học sinh thành công");
+        return response.data;
+    } catch (error) {
+        console.error('Lỗi khi cập nhật học sinh:', error);
+        throw error;
+    }
+}
+
+export const deleteStudent = async (id) => {
+    try {
+        await axios.delete(`${BASE_URL}/${id}`);
+        toast.success("Xóa học sinh thành công");
+    } catch (error) {
+        console.error('Lỗi khi xóa học sinh:', error);
+        throw error;
+    }
+}
+
+export const getStudentById = async (id) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Lỗi khi lấy thông tin học sinh:', error);
+        throw error;
+    }
+}
+export const searchStudent = async (searchName, classId) => {
+    try {
+        const params = {};
+        if (searchName) {
+            params.name_like = searchName;
+        }
+        if (classId) {
+            params.classId = classId;
+        }
+
+        const response = await axios.get(BASE_URL, { params });
+        return response.data;
+    } catch (error) {
+        console.error('Lỗi khi tìm kiếm học sinh:', error);
+        throw error;
+    }
+};

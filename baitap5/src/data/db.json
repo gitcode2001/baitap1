@@ -6,9 +6,9 @@
       "age": 25,
       "classes": {
         "classId": "1",
-        "nameClass": "Lớp c07"
+        "className": "Lớp c07"
       },
-      "grade": "nam",
+      "gender": "nam",
       "address": "Quảng Trị"
     },
     {
@@ -17,9 +17,9 @@
       "age": 23,
       "classes": {
         "classId": "1",
-        "nameClass": "Lớp c07"
+        "className": "Lớp c07"
       },
-      "grade": "nam",
+      "gender": "nam",
       "address": "Quảng Trị"
     },
     {
@@ -27,10 +27,10 @@
       "name": "Hoàng Thị Ánh Tuyết",
       "age": 19,
       "classes": {
-        "classId": "1",
-        "nameClass": "Lớp c07"
+        "classId": "2",
+        "className": "Lớp c08"
       },
-      "grade": "nữ",
+      "gender": "Nữ",
       "address": "Quảng Nam"
     },
     {
@@ -39,61 +39,67 @@
       "age": 25,
       "classes": {
         "classId": "4",
-        "nameClass": "Lớp c10"
+        "className": "Lớp c10"
       },
-      "grade": "nam",
+      "gender": "nam",
       "address": "Hà Nội"
     },
     {
-      "id": "ea0b",
-      "name": "1",
-      "age": 19,
-      "grade": "1",
+      "id": "fb23",
+      "name": "quỳnh",
+      "age": 27,
+      "gender": "nữ",
+      "address": "Quảng Trị",
       "classes": {
-        "classId": "1",
-        "nameClass": "Lớp c07"
-      },
-      "address": "12"
-    },
-    {
-      "id": "b39c",
-      "name": "1",
-      "age": 19,
-      "grade": "1",
-      "classes": {
-        "classId": "1",
-        "nameClass": "Lớp c07"
-      },
-      "address": "12"
-    },
-    {
-      "id": "e8e8",
-      "name": "123",
-      "age": 123,
-      "grade": "21",
-      "address": "12",
-      "classes": {
-        "classId": "1",
-        "nameClass": "21"
+        "classId": "4",
+        "className": "Lớp c10"
       }
+    },
+    {
+      "id": "d1b3",
+      "name": "quỳnh",
+      "age": 27,
+      "gender": "nữ",
+      "classId": "3",
+      "address": "Quảng Trị",
+      "classes": {
+        "classId": "3",
+        "className": "lớp c09"
+      }
+    },
+    {
+      "id": "2a78",
+      "name": "quỳnh",
+      "age": 27,
+      "gender": "nam",
+      "classes": {
+        "classId": "4",
+        "className": "Lớp c10"
+      },
+      "address": "Quảng Trị",
+      "classId": "4"
     }
   ],
   "classes": [
     {
       "classId": "1",
-      "className": "Lớp c07"
+      "className": "Lớp c07",
+      "id": "d1d5"
     },
     {
       "classId": "2",
-      "className": "Lớp c08"
+      "className": "Lớp c08",
+      "id": "03ec"
     },
     {
       "classId": "3",
-      "className": "lớp c09"
+      "className": "lớp c09",
+      "id": "ec09"
     },
     {
       "classId": "4",
-      "className": "Lớp c10"
+      "className": "Lớp c10",
+      "id": "7c89"
     }
   ]
 }

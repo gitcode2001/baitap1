@@ -17,7 +17,6 @@ export const addBlog = async (blog) => {
 export const getAllBlogs = async () => {
   try {
     const response = await axios.get(BASE_URL);
-    toast.success('Lấy danh sách blog thành công');
     return response.data;
   } catch (error) {
     console.error('Lỗi khi lấy danh sách blog:', error);

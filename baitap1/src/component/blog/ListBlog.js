@@ -31,7 +31,6 @@ function ListBlog() {
             await deleteBlog(selectedBlog.id);
             setShowDeleteModal(false);
             await fetchBlogs();
-
     };
 
     return (
@@ -69,7 +68,7 @@ function ListBlog() {
                 <Modal.Header closeButton>
                     <Modal.Title>Xác nhận xóa</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Bạn có chắc chắn muốn xóa blog có tiêu đề "{selectedBlog?.title}" không?</Modal.Body>
+                <Modal.Body>Bạn có chắc chắn muốn xóa blog có tiêu đề {selectedBlog?.title} không?</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>Hủy</Button>
                     <Button variant="danger" onClick={handleDeleteConfirm}>Xóa</Button>
