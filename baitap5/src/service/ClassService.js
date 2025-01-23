@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {toast} from "react-toastify";
 const BASE_CLASS_URL = 'http://localhost:3000/classes';
 
 export const getAllClasses = async () =>  {

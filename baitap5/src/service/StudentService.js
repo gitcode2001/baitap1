@@ -6,7 +6,6 @@ const BASE_URL = 'http://localhost:3000/students';
 export const getAllStudents = async () => {
     try {
         const response = await axios.get(BASE_URL);
-        toast.success("Lấy danh sách học sinh thành công");
         return response.data;
     } catch (error) {
         console.error('Lỗi khi lấy danh sách học sinh:', error);
@@ -38,10 +37,12 @@ export const updateStudent = async (student) => {
 
 export const deleteStudent = async (id) => {
     try {
+        const studentResponse = await axios.get(`${BASE_URL}/${id}`);
+        const studentName = studentResponse.data.name;
         await axios.delete(`${BASE_URL}/${id}`);
-        toast.success("Xóa học sinh thành công");
+        toast.success(`Xóa học sinh ${studentName} thành công`);
     } catch (error) {
-        console.error('Lỗi khi xóa học sinh:', error);
+        toast.error('Lỗi khi xóa học sinh:', error);
         throw error;
     }
 }
@@ -55,20 +56,12 @@ export const getStudentById = async (id) => {
         throw error;
     }
 }
-export const searchStudent = async (searchName, classId) => {
+export const detailStudent = async (id) => {
     try {
-        const params = {};
-        if (searchName) {
-            params.name_like = searchName;
-        }
-        if (classId) {
-            params.classId = classId;
-        }
-
-        const response = await axios.get(BASE_URL, { params });
+        const response = await axios.get(`${BASE_URL}/${id}`);
         return response.data;
     } catch (error) {
-        console.error('Lỗi khi tìm kiếm học sinh:', error);
+        console.error('L��i khi lấy thông tin chi tiết học sinh:', error);
         throw error;
     }
-};
+}
