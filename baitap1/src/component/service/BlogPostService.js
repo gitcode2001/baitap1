@@ -55,3 +55,13 @@ export const deleteBlog = async (id) => {
     throw error;
   }
 };
+
+export const searchBlogsByTitle = async (title) => {
+  try {
+    const response = await axios.get(`${BASE_URL}?title_like=${title}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error searching blogs by title:', error);
+    throw error;
+  }
+};

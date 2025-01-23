@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
-import {deleteBlog, getAllBlogs} from "../service/BlogPostService";
-
+import { deleteBlog, getAllBlogs } from "../service/BlogPostService";
 
 function ListBlog() {
     const [blogs, setBlogs] = useState([]);
+    const [filteredBlogs, setFilteredBlogs] = useState([]);
+    const [searchTitle, setSearchTitle] = useState('');
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [selectedBlog, setSelectedBlog] = useState(null);
 
@@ -14,10 +15,23 @@ function ListBlog() {
     }, []);
 
     const fetchBlogs = async () => {
-            const response = await getAllBlogs();
-            setBlogs(response);
-
+        const response = await getAllBlogs();
+        setBlogs(response);
+        setFilteredBlogs(response);
     };
+
+  const handleSearchChange = (e) => {
+    const title = e.target.value.toLowerCase();
+    setSearchTitle(title);
+
+    if (title) {
+        const filtered = blogs.filter(blog => blog.title.toLowerCase().includes(title));
+        console.log('Filtered blogs:', filtered);
+        setFilteredBlogs(filtered);
+    } else {
+        setFilteredBlogs(blogs);
+    }
+};
 
     const handleShow = (blog) => {
         setSelectedBlog(blog);
@@ -28,15 +42,22 @@ function ListBlog() {
 
     const handleDeleteConfirm = async () => {
         if (!selectedBlog) return;
-            await deleteBlog(selectedBlog.id);
-            setShowDeleteModal(false);
-            await fetchBlogs();
+        await deleteBlog(selectedBlog.id);
+        setShowDeleteModal(false);
+        await fetchBlogs();
     };
 
     return (
         <div className="container">
             <h3>Danh sách Blog</h3>
             <Link to="/posts/add" className="btn btn-success mb-3">Thêm Blog Mới</Link>
+            <input
+                type="text"
+                placeholder="Tìm kiếm theo tiêu đề"
+                value={searchTitle}
+                onChange={handleSearchChange}
+                className="form-control mb-3"
+            />
             <table className="table table-dark">
                 <thead>
                     <tr>
@@ -48,7 +69,7 @@ function ListBlog() {
                     </tr>
                 </thead>
                 <tbody>
-                    {blogs.map((blog, index) => (
+                    {filteredBlogs.map((blog, index) => (
                         <tr key={blog.id}>
                             <td>{index + 1}</td>
                             <td>{blog.title}</td>
@@ -74,7 +95,6 @@ function ListBlog() {
                     <Button variant="danger" onClick={handleDeleteConfirm}>Xóa</Button>
                 </Modal.Footer>
             </Modal>
-
         </div>
     );
 }

@@ -59,13 +59,20 @@ function ListStudent() {
     const handleClassSelectChange = (event) => {
         setSelectedClass(event.target.value);
     };
+
     const filteredStudents = students.filter(student => {
-        const regex = new RegExp(nameQuery, 'i');
+        const accentInsensitiveQuery = nameQuery
+            .replace(/a/g, '[aáâã]')
+            .replace(/e/g, '[eéê]')
+            .replace(/i/g, '[ií]')
+            .replace(/o/g, '[oóôõ]')
+            .replace(/u/g, '[uú]')
+            .replace(/y/g, '[yý]');
+        const regex = new RegExp(accentInsensitiveQuery.split('').join('.*'), 'i');
         const nameMatches = regex.test(student.name);
         const classMatches = selectedClass === "" || student.classes?.className === selectedClass;
         return nameMatches && classMatches;
     });
-
 
     return (
         <div>
@@ -104,7 +111,7 @@ function ListStudent() {
                         <tr key={student.id}>
                             <td>{index + 1}</td>
                             <td>
-                                <Link to={`/student/${student.id}/view`}>
+                                <Link to={`/student/${student.id}/view`} className="no-underline">
                                     {student.name}
                                 </Link>
                             </td>
