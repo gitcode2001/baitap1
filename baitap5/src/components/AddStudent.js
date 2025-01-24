@@ -29,22 +29,25 @@ const AddStudent = () => {
         address: yup.string().required("Địa chỉ là bắt buộc")
     });
 
-    const handleSubmit = async (values) => {
-        try {
-            const selectedClass = classes.find(cls => cls.classId === values.classId);
-            const studentData = {
-                ...values,
-                classes: {
-                    classId: selectedClass?.classId || "",
-                    className: selectedClass?.className || ""
-                }
-            };
-            await addStudent(studentData);
-            navigate("/");
-        } catch (error) {
-            console.error("Lỗi khi thêm học sinh:", error);
-        }
-    };
+   const handleSubmit = async (values) => {
+    try {
+        const selectedClass = classes.find(cls => cls.classId === values.classId);
+        const studentData = {
+            name: values.name,
+            age: values.age,
+            gender: values.gender,
+            address: values.address,
+            classes: {
+                classId: selectedClass?.classId || "",
+                className: selectedClass?.className || ""
+            }
+        };
+        await addStudent(studentData);
+        navigate("/");
+    } catch (error) {
+        console.error("Lỗi khi thêm học sinh:", error);
+    }
+};
 
     return (
         <Container className="mt-5">

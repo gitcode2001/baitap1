@@ -58,7 +58,7 @@ export const deleteBlog = async (id) => {
 
 export const searchBlogsByTitle = async (title) => {
   try {
-    const response = await axios.get(`${BASE_URL}?title_like=${title}`);
+    const response = await axios.get(`${BASE_URL}?title_like=${(title)}`);
     return response.data;
   } catch (error) {
     console.error('Error searching blogs by title:', error);

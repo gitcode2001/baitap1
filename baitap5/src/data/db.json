@@ -1,18 +1,6 @@
 {
   "students": [
     {
-      "id": "bd50",
-      "name": "trần bình an",
-      "age": 31,
-      "gender": "Nam",
-      "classes": {
-        "classId": "1",
-        "className": "Lớp c07"
-      },
-      "address": "Đà Nẵng",
-      "classId": "1"
-    },
-    {
       "id": "f103",
       "name": "trần văn cường",
       "age": 21,
@@ -21,8 +9,7 @@
         "classId": "3",
         "className": "lớp c09"
       },
-      "address": "Quảng Trị",
-      "classId": "3"
+      "address": "Quảng Trị"
     },
     {
       "id": "36a8",
@@ -33,8 +20,7 @@
         "classId": "3",
         "className": "lớp c09"
       },
-      "address": "Hà Nội",
-      "classId": "3"
+      "address": "Hà Nội"
     },
     {
       "id": "9bcc",
@@ -42,18 +28,16 @@
       "age": 23,
       "gender": "Nam",
       "classes": {
-        "classId": "3",
-        "className": "lớp c09"
+        "classId": "4",
+        "className": "Lớp c10"
       },
-      "address": "Quảng Trị",
-      "classId": "3"
+      "address": "Quảng Trị"
     },
     {
       "id": "619e",
       "name": "Hoàng Nguyệt Ánh",
       "age": 19,
       "gender": "Nam",
-      "classId": "2",
       "address": "Hà Nội",
       "classes": {
         "classId": "1",
@@ -65,20 +49,7 @@
       "name": "Trần Văn An",
       "age": 25,
       "gender": "Nam",
-      "classId": "4",
       "address": "Hà Nội",
-      "classes": {
-        "classId": "1",
-        "className": "Lớp c07"
-      }
-    },
-    {
-      "id": "77ec",
-      "name": "Lê Hồng Ân",
-      "age": 23,
-      "gender": "Nam",
-      "classId": "3",
-      "address": "Đà Nẵng",
       "classes": {
         "classId": "1",
         "className": "Lớp c07"
@@ -89,7 +60,6 @@
       "name": "Nguyễn Văn Trông",
       "age": 24,
       "gender": "Nam",
-      "classId": "2",
       "address": "123 , Đà Nẵng",
       "classes": {
         "classId": "2",
@@ -101,34 +71,62 @@
       "name": "Lê Nữ Quỳnh Nhi",
       "age": 23,
       "gender": "Nữ",
-      "classId": "4",
       "address": "Đà Nẵng",
       "classes": {
         "classId": "4",
         "className": "Lớp c10"
+      }
+    },
+    {
+      "id": "1262",
+      "name": "Hoàng Thị Ánh Tuyết",
+      "age": 23,
+      "gender": "Nữ",
+      "address": "Đà Nẵng",
+      "classes": {
+        "classId": "3",
+        "className": "lớp c09"
+      }
+    },
+    {
+      "id": "681e",
+      "name": "Bùi Đức Huy",
+      "age": 23,
+      "gender": "Nam",
+      "address": "Quảng Trị",
+      "classes": {
+        "classId": "1",
+        "className": "Lớp c07"
+      }
+    },
+    {
+      "id": "3e75",
+      "name": "Trần Quang Huy",
+      "age": 23,
+      "gender": "Nam",
+      "address": "Quảng Trị",
+      "classes": {
+        "classId": "1",
+        "className": "Lớp c07"
       }
     }
   ],
   "classes": [
     {
       "classId": "1",
-      "className": "Lớp c07",
-      "id": "ba2f"
+      "className": "Lớp c07"
     },
     {
       "classId": "2",
-      "className": "Lớp c08",
-      "id": "05a8"
+      "className": "Lớp c08"
     },
     {
       "classId": "3",
-      "className": "lớp c09",
-      "id": "eba8"
+      "className": "lớp c09"
     },
     {
       "classId": "4",
-      "className": "Lớp c10",
-      "id": "9d49"
+      "className": "Lớp c10"
     }
   ]
 }

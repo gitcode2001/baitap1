@@ -91,7 +91,7 @@ function ListStudent() {
             >
                 <option value="">Tất cả các lớp</option>
                 {classes.map((cls) => (
-                    <option key={cls.id} value={cls.className}>
+                    <option key={cls.classID} value={cls.className}>
                         {cls.className}
                     </option>
                 ))}
@@ -102,7 +102,6 @@ function ListStudent() {
                         <th>STT</th>
                         <th>Họ và tên</th>
                         <th>Lớp</th>
-                        <th>Địa chỉ</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
@@ -116,7 +115,6 @@ function ListStudent() {
                                 </Link>
                             </td>
                             <td>{student.classes?.className || 'N/A'}</td>
-                            <td>{student.address}</td>
                             <td>
                                 <Link to={`/student/${student.id}/edit`} className="btn btn-primary">Sửa</Link>
                                 <button className="btn btn-danger ml-2" onClick={() => handleShow(student)}>Xóa</button>

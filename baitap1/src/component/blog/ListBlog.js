@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
-import { deleteBlog, getAllBlogs } from "../service/BlogPostService";
+import { deleteBlog, getAllBlogs, searchBlogsByTitle } from "../service/BlogPostService";
 
 function ListBlog() {
     const [blogs, setBlogs] = useState([]);
@@ -20,14 +20,18 @@ function ListBlog() {
         setFilteredBlogs(response);
     };
 
-  const handleSearchChange = (e) => {
-    const title = e.target.value.toLowerCase();
+ const handleSearchChange = async (e) => {
+    const title = e.target.value;
     setSearchTitle(title);
 
     if (title) {
-        const filtered = blogs.filter(blog => blog.title.toLowerCase().includes(title));
-        console.log('Filtered blogs:', filtered);
-        setFilteredBlogs(filtered);
+        try {
+            const filtered = await searchBlogsByTitle(title);
+            console.log('Filtered blogs:', filtered);
+            setFilteredBlogs(filtered);
+        } catch (error) {
+            console.error('Error during search:', error);
+        }
     } else {
         setFilteredBlogs(blogs);
     }
