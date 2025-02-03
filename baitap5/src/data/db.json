@@ -67,28 +67,6 @@
       }
     },
     {
-      "id": "8492",
-      "name": "Lê Nữ Quỳnh Nhi",
-      "age": 23,
-      "gender": "Nữ",
-      "address": "Đà Nẵng",
-      "classes": {
-        "classId": "4",
-        "className": "Lớp c10"
-      }
-    },
-    {
-      "id": "1262",
-      "name": "Hoàng Thị Ánh Tuyết",
-      "age": 23,
-      "gender": "Nữ",
-      "address": "Đà Nẵng",
-      "classes": {
-        "classId": "3",
-        "className": "lớp c09"
-      }
-    },
-    {
       "id": "681e",
       "name": "Bùi Đức Huy",
       "age": 23,
@@ -100,33 +78,37 @@
       }
     },
     {
-      "id": "3e75",
+      "id": "c03a",
       "name": "Trần Quang Huy",
       "age": 23,
       "gender": "Nam",
       "address": "Quảng Trị",
       "classes": {
-        "classId": "1",
-        "className": "Lớp c07"
+        "classId": "2",
+        "className": "Lớp c08"
       }
     }
   ],
   "classes": [
     {
       "classId": "1",
-      "className": "Lớp c07"
+      "className": "Lớp c07",
+      "id": "a012"
     },
     {
       "classId": "2",
-      "className": "Lớp c08"
+      "className": "Lớp c08",
+      "id": "6ad2"
     },
     {
       "classId": "3",
-      "className": "lớp c09"
+      "className": "lớp c09",
+      "id": "dc2a"
     },
     {
       "classId": "4",
-      "className": "Lớp c10"
+      "className": "Lớp c10",
+      "id": "67d8"
     }
   ]
 }

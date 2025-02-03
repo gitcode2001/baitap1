@@ -61,7 +61,25 @@ export const detailStudent = async (id) => {
         const response = await axios.get(`${BASE_URL}/${id}`);
         return response.data;
     } catch (error) {
-        console.error('L��i khi lấy thông tin chi tiết học sinh:', error);
+        console.error('Lỗi khi lấy thông tin chi tiết học sinh:', error);
         throw error;
     }
 }
+export const searchStudent = async (name, classId) => {
+    try {
+        const params = {};
+        if (name) {
+            params.name_like = name;
+        }
+        if (classId) {
+            params.classId = classId;
+        }
+
+        const response = await axios.get(BASE_URL, { params });
+        return response.data;
+    } catch (error) {
+        console.error('Lỗi khi tìm kiếm học sinh:', error);
+        throw error;
+    }
+}
+
