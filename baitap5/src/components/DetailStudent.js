@@ -1,9 +1,9 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { detailStudent } from "../service/StudentService";
+import {useParams} from "react-router-dom";
+import {detailStudent} from "../service/StudentService";
 
 const DetailStudent = () => {
-    const { id } = useParams();
+    const {id} = useParams();
     const [studentDetail, setStudentDetail] = React.useState(null);
 
     React.useEffect(() => {
@@ -29,30 +29,30 @@ const DetailStudent = () => {
             <h2>Chi tiết học sinh</h2>
             <table className="table">
                 <tbody>
-                    <tr>
-                        <td>ID</td>
-                        <td>{studentDetail.id}</td>
-                    </tr>
-                    <tr>
-                        <td>Họ và tên</td>
-                        <td>{studentDetail.name}</td>
-                    </tr>
-                    <tr>
-                        <td>Tuổi</td>
-                        <td>{studentDetail.age}</td>
-                    </tr>
-                    <tr>
-                        <td>Giới Tính</td>
-                        <td>{studentDetail.gender}</td>
-                    </tr>
-                    <tr>
-                        <td>Lớp</td>
-                        <td>{studentDetail.classes?.className || 'N/A'}</td>
-                    </tr>
-                    <tr>
-                        <td>Địa chỉ</td>
-                        <td>{studentDetail.address}</td>
-                    </tr>
+                <tr>
+                    <td>ID</td>
+                    <td>{studentDetail.id}</td>
+                </tr>
+                <tr>
+                    <td>Họ và tên</td>
+                    <td>{studentDetail.name}</td>
+                </tr>
+                <tr>
+                    <td>Tuổi</td>
+                    <td>{studentDetail.age}</td>
+                </tr>
+                <tr>
+                    <td>Giới Tính</td>
+                    <td>{studentDetail.gender}</td>
+                </tr>
+                <tr>
+                    <td>Lớp</td>
+                    <td>{studentDetail.classes?.className || 'N/A'}</td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ</td>
+                    <td>{studentDetail.address}</td>
+                </tr>
                 </tbody>
             </table>
         </div>

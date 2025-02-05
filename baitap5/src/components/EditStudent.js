@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { getStudentById, updateStudent } from "../service/StudentService";
-import { useNavigate, useParams } from 'react-router-dom';
-import { getAllClasses } from "../service/ClassService";
+import React, {useState, useEffect} from 'react';
+import {getStudentById, updateStudent} from "../service/StudentService";
+import {useNavigate, useParams} from 'react-router-dom';
+import {getAllClasses} from "../service/ClassService";
 
 const EditStudent = () => {
     const [student, setStudent] = useState({
@@ -19,7 +19,7 @@ const EditStudent = () => {
     const [classOptions, setClassOptions] = useState([]);
 
     const navigate = useNavigate();
-    const { id } = useParams();
+    const {id} = useParams();
 
     useEffect(() => {
         const fetchStudent = async () => {
@@ -36,15 +36,15 @@ const EditStudent = () => {
     }, [id]);
 
     const handleInputChange = (event) => {
-        const { name, value } = event.target;
+        const {name, value} = event.target;
         if (name === 'classId') {
             const selectedClass = classOptions.find(cls => cls.classId === value);
             setStudent({
                 ...student,
-                classes: { classId: value, className: selectedClass.className }
+                classes: {classId: value, className: selectedClass.className}
             });
         } else {
-            setStudent({ ...student, [name]: value });
+            setStudent({...student, [name]: value});
         }
     };
 
@@ -59,7 +59,7 @@ const EditStudent = () => {
     };
 
     return (
-        <div className="container mt-5" style={{ maxWidth: '600px' }}>
+        <div className="container mt-5" style={{maxWidth: '600px'}}>
             <div className="card shadow-sm">
                 <div className="card-body">
                     <h2 className="text-center mb-4">Chỉnh sửa học sinh</h2>

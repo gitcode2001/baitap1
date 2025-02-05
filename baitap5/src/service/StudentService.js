@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 
 const BASE_URL = 'http://localhost:3000/students';
 
@@ -75,7 +75,7 @@ export const searchStudent = async (name, classId) => {
             params.classId = classId;
         }
 
-        const response = await axios.get(BASE_URL, { params });
+        const response = await axios.get(BASE_URL, {params});
         return response.data;
     } catch (error) {
         console.error('Lỗi khi tìm kiếm học sinh:', error);
