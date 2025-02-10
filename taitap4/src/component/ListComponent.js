@@ -1,9 +1,9 @@
-import React, {useEffect, useRef, useState} from "react";
-import {searchProducts} from "../service/productService";
-import {getAllCategory} from "../service/categoriesService";
-import {Link} from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { searchProducts } from "../service/productService";
+import { getAllCategory } from "../service/categoriesService";
+import { Link } from "react-router-dom";
 
-function ListComponent(){
+function ListComponent() {
     const [productList, setProductList] = useState(null);
     const [categoryList, setCategoryList] = useState([]);
 
@@ -16,7 +16,7 @@ function ListComponent(){
             const categoryId = categoryIdRef.current.value;
             const list = await searchProducts(searchName, categoryId);
             setProductList(list);
-        }
+        };
         fetchData();
     }, []);
 
@@ -24,8 +24,8 @@ function ListComponent(){
         const fetchData = async () => {
             const categories = await getAllCategory();
             setCategoryList(categories);
-        }
-        fetchData()
+        };
+        fetchData();
     }, []);
 
     function formatDate(dateString) {
@@ -42,9 +42,9 @@ function ListComponent(){
         const categoryId = categoryIdRef.current.value;
         const list = await searchProducts(searchName, categoryId);
         setProductList(list);
-    }
+    };
 
-    return(
+    return (
         <>
             <h1 className="text-center mb-4">Danh sách sản phẩm</h1>
 
@@ -129,7 +129,6 @@ function ListComponent(){
                 )}
             </div>
         </>
-
     );
 }
 

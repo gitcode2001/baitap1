@@ -20,15 +20,6 @@ export async function addProduct(product) {
         return response.data;
     } catch (e) {
         console.log(e.message);
-    }
-}
-
-export async function findProductById(id) {
-    try {
-        const response = await axios.get(`http://localhost:8080/products/${id}`);
-        return response.data;
-    } catch (e) {
-        console.log(e.message);
         return null;
     }
 }

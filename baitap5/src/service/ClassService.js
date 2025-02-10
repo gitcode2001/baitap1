@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_CLASS_URL = 'http://localhost:3000/classes';
+const BASE_CLASS_URL = 'http://localhost:8089/classes';
 
 export const getAllClasses = async () => {
     try {

@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {deleteStudent, getAllStudents,searchStudent} from "../service/StudentService";
-import {getAllClasses} from "../service/ClassService";
-import {Link} from "react-router-dom";
-import {Button, Modal} from "react-bootstrap";
-import {toast} from "react-toastify";
+import React, { useState, useEffect } from 'react';
+import { deleteStudent, getAllStudents, searchStudent } from "../service/StudentService";
+import { getAllClasses } from "../service/ClassService";
+
+import { Link } from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 function ListStudent() {
     const [students, setStudents] = useState([]);
@@ -12,6 +13,8 @@ function ListStudent() {
     const [selectedStudent, setSelectedStudent] = useState(null);
     const [nameQuery, setNameQuery] = useState("");
     const [selectedClass, setSelectedClass] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+    const studentsPerPage = 5;
 
     useEffect(() => {
         fetchClasses();
@@ -19,18 +22,28 @@ function ListStudent() {
     }, []);
 
     const fetchStudents = async () => {
-        const response = await getAllStudents();
-        const sortedStudents = response.sort((a, b) => {
-            const lastNameA = a.name.split(' ').pop().toLowerCase();
-            const lastNameB = b.name.split(' ').pop().toLowerCase();
-            return lastNameA.localeCompare(lastNameB);
-        });
-        setStudents(sortedStudents);
+        try {
+            const response = await getAllStudents();
+            const sortedStudents = response.sort((a, b) => {
+                const lastNameA = a.name.split(' ').pop().toLowerCase();
+                const lastNameB = b.name.split(' ').pop().toLowerCase();
+                return lastNameA.localeCompare(lastNameB);
+            });
+            setStudents(sortedStudents);
+        } catch (error) {
+            console.error('Error fetching students:', error);
+            toast.error('Có lỗi xảy ra khi lấy danh sách học sinh');
+        }
     };
 
     const fetchClasses = async () => {
-        const response = await getAllClasses();
-        setClasses(Array.isArray(response) ? response : []);
+        try {
+            const response = await getAllClasses();
+            setClasses(Array.isArray(response) ? response : []);
+        } catch (error) {
+            console.error('Error fetching classes:', error);
+            toast.error('Có lỗi xảy ra khi lấy danh sách lớp');
+        }
     };
 
     const handleShow = (student) => {
@@ -46,6 +59,7 @@ function ListStudent() {
             await deleteStudent(selectedStudent.id);
             setShowDeleteModal(false);
             await fetchStudents();
+            toast.success('Xóa học sinh thành công');
         } catch (error) {
             console.error('Error deleting student:', error);
             toast.error('Có lỗi xảy ra khi xóa học sinh');
@@ -59,29 +73,29 @@ function ListStudent() {
     const handleClassSelectChange = (event) => {
         setSelectedClass(event.target.value);
     };
+
     const handleSearch = async () => {
-        const lowerCaseQuery = nameQuery.toLowerCase();
-
-        const response = await searchStudent(lowerCaseQuery, selectedClass);
-        console.log('Kết quả tìm kiếm:', response);
-        setStudents(response);
-    };
-
-
-    const searchStudent = async (nameQuery, selectedClass) => {
-        let students = await getAllStudents();
-        students = students.filter(student =>
-            student.name.toLowerCase().includes(nameQuery)
-        );
-        if (selectedClass) {
-            students = students.filter(student =>
-                student.classes?.className.toLowerCase() === selectedClass.toLowerCase()
-            );
+        try {
+            const lowerCaseQuery = nameQuery.toLowerCase();
+            const response = await searchStudent(lowerCaseQuery, selectedClass);
+            console.log('Kết quả tìm kiếm:', response);
+            setStudents(response);
+            setCurrentPage(1);
+        } catch (error) {
+            console.error('Error searching students:', error);
+            toast.error('Có lỗi xảy ra khi tìm kiếm học sinh');
         }
-
-        return students;
     };
 
+    const indexOfLastStudent = currentPage * studentsPerPage;
+    const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
+    const currentStudents = students.slice(indexOfFirstStudent, indexOfLastStudent);
+
+    const totalPages = Math.ceil(students.length / studentsPerPage);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     return (
         <div>
@@ -108,31 +122,42 @@ function ListStudent() {
             <button className="btn btn-primary mb-3" onClick={handleSearch}>Tìm kiếm</button>
             <table className="table">
                 <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Họ và tên</th>
-                    <th>Lớp</th>
-                    <th>Hành động</th>
-                </tr>
+                    <tr>
+                        <th>STT</th>
+                        <th>Họ và tên</th>
+                        <th>Lớp</th>
+                        <th>Hành động</th>
+                    </tr>
                 </thead>
                 <tbody>
-                {students.map((student, index) => (
-                    <tr key={student.id}>
-                        <td>{index + 1}</td>
-                        <td>
-                            <Link to={`/student/${student.id}/view`} className="no-underline">
-                                {student.name}
-                            </Link>
-                        </td>
-                        <td>{student.classes?.className || 'N/A'}</td>
-                        <td>
-                            <Link to={`/student/${student.id}/edit`} className="btn btn-primary">Sửa</Link>
-                            <button className="btn btn-danger ml-2" onClick={() => handleShow(student)}>Xóa</button>
-                        </td>
-                    </tr>
-                ))}
+                    {currentStudents.map((student, index) => (
+                        <tr key={student.id}>
+                            <td>{indexOfFirstStudent + index + 1}</td>
+                            <td>
+                                <Link to={`/student/${student.id}/view`} className="no-underline">
+                                    {student.name}
+                                </Link>
+                            </td>
+                            <td>{student.classes?.className || 'N/A'}</td>
+                            <td>
+                                <Link to={`/student/${student.id}/edit`} className="btn btn-primary">Sửa</Link>
+                                <button className="btn btn-danger ml-2" onClick={() => handleShow(student)}>Xóa</button>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
+            <div className="pagination">
+                {[...Array(totalPages)].map((_, index) => (
+                    <button
+                        key={index}
+                        className={`btn ${currentPage === index + 1 ? 'btn-secondary' : 'btn-light'}`}
+                        onClick={() => handlePageChange(index + 1)}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+            </div>
             <Modal show={showDeleteModal} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Xác nhận xóa</Modal.Title>
